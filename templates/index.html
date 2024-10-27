@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tokenizador con tiktoken de OpenAI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styless.css')}}">
+</head>
+<body>
+    <div class="container">
+        <h1>Tokenización usando la librería tiktoken:</h1>
+        <form method="POST">
+            <label for="input_text">Introduce una oración</label><br>
+            <textarea name="input_text" id="input_text" rows="4" cols="50">{{ text or '' }}</textarea>
+            <button type="submit">Tokenizar :-)</button>
+        </form>
+
+        {% if tokens %}
+            <div class="result-box">
+                <h2>Resultados:</h2>
+                <p><strong>Oración original:</strong>{{ text }}</p>
+                <p><strong>Lista de Tokens genereados:</strong>{{ tokens }}</p>
+                <p><strong>Texto decodificado:</strong> {{ decode_text }}</p>
+
+                <h2>Lista de correspondecia entre tokens y texto:</h2>
+                <ul>
+                    {% for token, token_text in token_text_pairs %}
+                        <li><strong>Token: {{ token }}</strong> -> <strong>Texto: "{{ token_text }}"</strong></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

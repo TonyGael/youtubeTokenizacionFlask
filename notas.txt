@@ -1,0 +1,5 @@
+librería tiktoken -> gpt2 (modelo para codificar los token)
+flask: micro framewrok de python
+templates: index.html
+static: css, js
+app.py
